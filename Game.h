@@ -25,6 +25,9 @@ public:
 
 	void AddSprite(class SpriteComponent* sprite);
 	void RemoveSprite(class SpriteComponent* sprite);
+
+	int GetGameWidth() const { return GameWidth; }
+	int GetGameHeight() const { return GameHeight; }
 	
 	SDL_Texture* GetTexture(const std::string& fileName);
 private:
@@ -33,6 +36,8 @@ private:
 	void GenerateOutput();
 	void LoadData();
 	void UnloadData();
+	int GameWidth;
+	int GameHeight;
 	
 	// Map of textures loaded
 	std::unordered_map<std::string, SDL_Texture*> mTextures;
