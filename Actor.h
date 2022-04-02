@@ -7,8 +7,9 @@
 // ----------------------------------------------------------------
 
 #pragma once
-#include <vector>
 #include "Math.h"
+#include <vector>
+#include <typeinfo>
 class Actor//classe base de ator
 {
 public:
@@ -46,6 +47,7 @@ public:
 	// insere e remove componentes
 	void AddComponent(class Component* component);
 	void RemoveComponent(class Component* component);
+	Component* GetComponent(Component* component);
 //variáveis do ator
 private:
 	// estado

@@ -7,8 +7,6 @@
 // ----------------------------------------------------------------
 
 #include "Ship.h"
-#include "AnimSpriteComponent.h"
-#include "Game.h"
 
 Ship::Ship(Game* game)
 	:Actor(game)
@@ -24,6 +22,8 @@ Ship::Ship(Game* game)
 		game->GetTexture("Assets/Ship04.png"),
 	};
 	asc->SetAnimTextures(anims);
+
+	this->bcc = new BulletControllerComponent(this);
 }
 
 void Ship::UpdateActor(float deltaTime)
@@ -74,5 +74,11 @@ void Ship::ProcessKeyboard(const uint8_t* state)
 	if (state[SDL_SCANCODE_W])
 	{
 		mDownSpeed -= 300.0f;
+	}
+	
+	if (state[SDL_SCANCODE_SPACE])
+	{
+		//BulletControllerComponent* bcc = (BulletControllerComponent*) GetComponent(new BulletControllerComponent(this));
+		this->bcc->GenerateBullet();
 	}
 }

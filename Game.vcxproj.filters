@@ -34,6 +34,12 @@
     <ClCompile Include="BGSpriteComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletControllerComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h">
@@ -60,5 +66,7 @@
     <ClInclude Include="BGSpriteComponent.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="Bullet.h" />
+    <ClInclude Include="BulletControllerComponent.h" />
   </ItemGroup>
 </Project>
