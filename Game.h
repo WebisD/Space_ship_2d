@@ -11,6 +11,9 @@
 #include <unordered_map>
 #include <string>
 #include <vector>
+#include "Enemy.h"
+
+using namespace std;
 
 class Game
 {
@@ -28,8 +31,8 @@ public:
 
 	int GetGameWidth() const { return GameWidth; }
 	int GetGameHeight() const { return GameHeight; }
-	
-	SDL_Texture* GetTexture(const std::string& fileName);
+
+	SDL_Texture* GetTexture(const string& fileName);
 private:
 	void ProcessInput();
 	void UpdateGame();
@@ -40,15 +43,15 @@ private:
 	int GameHeight;
 	
 	// Map of textures loaded
-	std::unordered_map<std::string, SDL_Texture*> mTextures;
+	unordered_map<string, SDL_Texture*> mTextures;
 
 	// All the actors in the game
-	std::vector<class Actor*> mActors;
+	vector<class Actor*> mActors;
 	// Any pending actors
-	std::vector<class Actor*> mPendingActors;
+	vector<class Actor*> mPendingActors;
 
 	// All the sprite components drawn
-	std::vector<class SpriteComponent*> mSprites;
+	vector<class SpriteComponent*> mSprites;
 
 	SDL_Window* mWindow;
 	SDL_Renderer* mRenderer;
@@ -59,4 +62,6 @@ private:
 
 	// Game-specific
 	class Ship* mShip; // Player's ship
+	int enemiesAmount;
+	vector<class Enemy*> enemies;
 };

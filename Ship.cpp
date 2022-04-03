@@ -9,6 +9,7 @@
 #include "Ship.h"
 #include "AnimSpriteComponent.h"
 #include "Game.h"
+#include <iostream>
 
 Ship::Ship(Game* game)
 	:Actor(game)
@@ -24,6 +25,9 @@ Ship::Ship(Game* game)
 		game->GetTexture("Assets/Ship04.png"),
 	};
 	asc->SetAnimTextures(anims);
+
+	mWidth = 64.f;
+	mHeight = 29.;
 }
 
 void Ship::UpdateActor(float deltaTime)
@@ -34,21 +38,21 @@ void Ship::UpdateActor(float deltaTime)
 	pos.x += mRightSpeed * deltaTime;
 	pos.y += mDownSpeed * deltaTime;
 	// Restrict position to left half of screen
-	if (pos.x < 25.0f)
+	if (pos.x - GetMidWidth() < 0)
 	{
-		pos.x = 25.0f;
+		pos.x = GetMidWidth();
 	}
-	else if (pos.x > 500.0f)
+	else if (pos.x + GetMidWidth() > GetGame()->GetGameWidth())
 	{
-		pos.x = 500.0f;
+		pos.x = GetGame()->GetGameWidth() - GetMidWidth();
 	}
-	if (pos.y < 25.0f)
+	if (pos.y - GetMidHeight() < 0.0f)
 	{
-		pos.y = 25.0f;
+		pos.y = GetMidHeight();
 	}
-	else if (pos.y > 743.0f)
+	else if (pos.y + GetMidHeight() > GetGame()->GetGameHeight())
 	{
-		pos.y = 743.0f;
+		pos.y = GetGame()->GetGameHeight() - GetMidHeight();
 	}
 	SetPosition(pos);
 }

@@ -1,32 +1,29 @@
+#include <cstdlib>
+#include <math.h>
 #include "Enemy.h"
 #include "Utils.h"
 #include "Game.h"
-#include <cstdlib>
 #include "AnimSpriteComponent.h"
 
-Enemy::Enemy(Game* game) :
-	Actor(game),
-	mLeftSpeed(0.0f),
-	mDownSpeed(0.0f)
+Enemy::Enemy(Game* game) : Ship(game)
 {
+	SetInitialRandomPosition();
+	
+	mDownSpeed = .0f;
+	mRightSpeed = -40.f;
 
-	AnimSpriteComponent* asc = new AnimSpriteComponent(this);
-	std::vector<SDL_Texture*> anims = {
-		game->GetTexture("Assets/Ship01.png"),
-		game->GetTexture("Assets/Ship02.png"),
-		game->GetTexture("Assets/Ship03.png"),
-		game->GetTexture("Assets/Ship04.png"),
-	};
-	asc->SetAnimTextures(anims);
-
-
-
+	SetRotation(Math::Pi);
 };
 
 
 void Enemy::UpdateActor(float deltaTime)
 {
+	Vector2 pos = GetPosition();
+	
+	pos.x += GetRightSpeed() * deltaTime;
+	pos.y += GetDownSpeed() * deltaTime;
 
+	SetPosition(pos);
 }
 
 
@@ -37,8 +34,8 @@ void Enemy::SetInitialRandomPosition()
 	int offset = 200;
 
 	int randX = Utils::RandNumber(gameWidth, gameWidth + offset);
-	int randY = Utils::RandNumber(-Ge, gameHeight + )
+	int randY = Utils::RandNumber(-GetMidHeight(), gameHeight + GetMidHeight());
 
-		Vector2
-		SetPosition
+	Vector2 randPosision = Vector2(randX, randY);
+	SetPosition(randPosision);
 }
