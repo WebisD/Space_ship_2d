@@ -1,5 +1,6 @@
 #pragma once
 #include "Ship.h"
+#include <iostream>
 
 
 #ifndef _ENEMY_H_

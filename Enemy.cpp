@@ -24,6 +24,9 @@ void Enemy::UpdateActor(float deltaTime)
 	pos.y += GetDownSpeed() * deltaTime;
 
 	SetPosition(pos);
+
+	const bool isOutOfWindow = pos.x - GetMidWidth() < -GetMidWidth() * 2;
+	if (isOutOfWindow) delete this;
 }
 
 
