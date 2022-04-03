@@ -31,13 +31,16 @@ bool Game::Initialize()
 		return false;
 	}
 	
-	mWindow = SDL_CreateWindow("Game Programming in C++ (Chapter 2)", 100, 100, 1024, 768, 0);
+	GameWidth = 1024;
+	GameHeight = 768;
+
+	mWindow = SDL_CreateWindow("Game Programming in C++ (Chapter 2)", 100, 100, GameWidth, GameHeight, 0);
 	if (!mWindow)
 	{
 		SDL_Log("Failed to create window: %s", SDL_GetError());
 		return false;
 	}
-	
+
 	mRenderer = SDL_CreateRenderer(mWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	if (!mRenderer)
 	{
@@ -157,6 +160,16 @@ void Game::LoadData()
 	mShip = new Ship(this);
 	mShip->SetPosition(Vector2(100.0f, 384.0f));
 	mShip->SetScale(1.5f);
+
+	// Enemies
+	enemiesAmount = 5;
+	for (int i = 0; i < enemiesAmount; i++)
+	{
+		Enemy* enemy = new Enemy(this);
+		enemy->SetScale(1.5f);
+
+		enemies.push_back(enemy);
+	}
 
 	// Create actor for the background (this doesn't need a subclass)
 	Actor* temp = new Actor(this);

@@ -36,6 +36,8 @@ public:
 	float GetScale() const { return mScale; }
 	void SetScale(float scale) { mScale = scale; }
 	float GetRotation() const { return mRotation; }
+	float GetMidHeight() const { return mHeight / 2; }
+	float GetMidWidth() const { return mWidth / 2; }
 	void SetRotation(float rotation) { mRotation = rotation; }
 
 	State GetState() const { return mState; }
@@ -49,6 +51,9 @@ public:
 	void RemoveComponent(class Component* component);
 	Component* GetComponent(Component* component);
 //variáveis do ator
+protected:
+	float mHeight;
+	float mWidth;
 private:
 	// estado
 	State mState;

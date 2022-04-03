@@ -20,7 +20,7 @@ public:
 	void ProcessKeyboard(const uint8_t* state);
 	float GetRightSpeed() const { return mRightSpeed; }
 	float GetDownSpeed() const { return mDownSpeed; }
-private:
+protected:
 	float mRightSpeed;
 	float mDownSpeed;
 	BulletControllerComponent* bcc = nullptr;

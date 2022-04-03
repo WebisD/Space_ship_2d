@@ -24,6 +24,9 @@ Ship::Ship(Game* game)
 	asc->SetAnimTextures(anims);
 
 	this->bcc = new BulletControllerComponent(this);
+
+	mWidth = 64.f;
+	mHeight = 29.;
 }
 
 void Ship::UpdateActor(float deltaTime)
@@ -34,21 +37,21 @@ void Ship::UpdateActor(float deltaTime)
 	pos.x += mRightSpeed * deltaTime;
 	pos.y += mDownSpeed * deltaTime;
 	// Restrict position to left half of screen
-	if (pos.x < 25.0f)
+	if (pos.x - GetMidWidth() < 0)
 	{
-		pos.x = 25.0f;
+		pos.x = GetMidWidth();
 	}
-	else if (pos.x > this->GetGame()->GetWindowWidth()/2.f)
+	else if (pos.x + GetMidWidth() > GetGame()->GetGameWidth())
 	{
-		pos.x = this->GetGame()->GetWindowWidth() / 2.f;
+		pos.x = GetGame()->GetGameWidth() - GetMidWidth();
 	}
-	if (pos.y < 25.0f)
+	if (pos.y - GetMidHeight() < 0.0f)
 	{
-		pos.y = 25.0f;
+		pos.y = GetMidHeight();
 	}
-	else if (pos.y > this->GetGame()->GetWindowHeight() - 25.f)
+	else if (pos.y + GetMidHeight() > GetGame()->GetGameHeight())
 	{
-		pos.y = this->GetGame()->GetWindowHeight() - 25.f;
+		pos.y = GetGame()->GetGameHeight() - GetMidHeight();
 	}
 	SetPosition(pos);
 }
