@@ -300,3 +300,13 @@ void Game::RemoveSprite(SpriteComponent* sprite)
 	auto iter = std::find(mSprites.begin(), mSprites.end(), sprite);
 	mSprites.erase(iter);
 }
+
+int Game::GetWindowHeight()
+{
+	return SDL_GetWindowSurface(mWindow)->h;
+}
+
+int Game::GetWindowWidth()
+{
+	return SDL_GetWindowSurface(mWindow)->w;
+}

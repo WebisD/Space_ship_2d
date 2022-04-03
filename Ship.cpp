@@ -38,17 +38,17 @@ void Ship::UpdateActor(float deltaTime)
 	{
 		pos.x = 25.0f;
 	}
-	else if (pos.x > 500.0f)
+	else if (pos.x > this->GetGame()->GetWindowWidth()/2.f)
 	{
-		pos.x = 500.0f;
+		pos.x = this->GetGame()->GetWindowWidth() / 2.f;
 	}
 	if (pos.y < 25.0f)
 	{
 		pos.y = 25.0f;
 	}
-	else if (pos.y > 743.0f)
+	else if (pos.y > this->GetGame()->GetWindowHeight() - 25.f)
 	{
-		pos.y = 743.0f;
+		pos.y = this->GetGame()->GetWindowHeight() - 25.f;
 	}
 	SetPosition(pos);
 }

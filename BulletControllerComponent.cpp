@@ -13,9 +13,7 @@ void BulletControllerComponent::Update(float deltaTime)
 	{
 		if (checkBulletCollision(bullet))
 		{
-			bullets.pop_back();
-			std::cout << bullet << " " << currIdx << "\n";
-			delete bullet;
+			bulletsToDelete.push_back(std::make_pair(currIdx, bullet));
 		}
 		else {
 			bullet->Update(deltaTime);
@@ -23,13 +21,22 @@ void BulletControllerComponent::Update(float deltaTime)
 
 		currIdx++;
 	}
+
+	int size = bulletsToDelete.size();
+	
+	for (int i = 0; i < size; i++) {
+		int idx = bulletsToDelete[i].first;
+		bullets.erase(bullets.begin() + idx);
+		delete bulletsToDelete[i].second;
+	}
+
+	bulletsToDelete.clear();
 }
 
 bool BulletControllerComponent::checkBulletCollision(Bullet* bullet) 
 {
-	if (bullet->GetPosition().x >= 800.f)
+	if (bullet->GetPosition().x >= mOwner->GetGame()->GetWindowWidth())
 	{
-		std::cout << "FORA DA TELA PORRA\n";
 		return true;
 	}
 
@@ -38,8 +45,12 @@ bool BulletControllerComponent::checkBulletCollision(Bullet* bullet)
 
 void BulletControllerComponent::GenerateBullet()
 {
-	if (mLastShot <= SDL_GetTicks() + 200) {
+	if (SDL_GetTicks() > mLastShot + mShotInterval) {
+		mLastShot = SDL_GetTicks();
 		bullets.push_back(new Bullet(mOwner->GetGame(), mOwner->GetPosition()));
-		mLastShot += SDL_GetTicks();
 	}
+}
+
+void BulletControllerComponent::SetShotInterval(Uint32 shotInterval) {
+	mShotInterval = shotInterval;
 }

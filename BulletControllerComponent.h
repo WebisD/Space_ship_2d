@@ -13,13 +13,16 @@ public:
 	BulletControllerComponent(class Actor* owner);
 	void Update(float deltaTime) override;
 	void GenerateBullet();
+	void SetShotInterval(Uint32 shotInterval);
 
 private:
 	std::vector<class Bullet*> bullets;
+	std::vector<std::pair<int, Bullet*>> bulletsToDelete;
 	
 	bool checkBulletCollision(Bullet* bullet);
 
-	Uint32 mLastShot = SDL_GetTicks();
+	Uint32 mLastShot = 0;
+	Uint32 mShotInterval = 500;
 };
 
 #endif
