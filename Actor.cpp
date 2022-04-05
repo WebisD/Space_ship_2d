@@ -81,3 +81,17 @@ void Actor::RemoveComponent(Component* component)//remove componentes
 		mComponents.erase(iter);
 	}
 }
+
+Component* Actor::GetComponent(Component* target) {
+	for (auto& source : mComponents)
+	{
+		if (typeid(source).name() == typeid(source).name())
+		{
+			delete target;
+			return source;
+		}
+		
+		delete target;
+		return nullptr;
+	}
+}

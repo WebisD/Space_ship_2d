@@ -33,6 +33,12 @@ public:
 	int GetGameHeight() const { return GameHeight; }
 
 	SDL_Texture* GetTexture(const string& fileName);
+	
+	SDL_Texture* GetTexture(const std::string& fileName);
+
+	int GetWindowWidth();
+	int GetWindowHeight();
+
 private:
 	void ProcessInput();
 	void UpdateGame();

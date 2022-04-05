@@ -8,6 +8,10 @@
 
 #pragma once
 #include "Actor.h"
+#include "BulletControllerComponent.h"
+#include "AnimSpriteComponent.h"
+#include "Game.h"
+
 class Ship : public Actor
 {
 public:
@@ -19,4 +23,5 @@ public:
 protected:
 	float mRightSpeed;
 	float mDownSpeed;
+	BulletControllerComponent* bcc = nullptr;
 };
