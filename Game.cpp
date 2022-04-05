@@ -12,6 +12,7 @@
 #include "Actor.h"
 #include "SpriteComponent.h"
 #include "Ship.h"
+#include "Enemy.h"
 #include "BGSpriteComponent.h"
 
 Game::Game()

@@ -11,7 +11,6 @@
 #include <unordered_map>
 #include <string>
 #include <vector>
-#include "Enemy.h"
 
 using namespace std;
 
@@ -33,8 +32,6 @@ public:
 	int GetGameHeight() const { return GameHeight; }
 
 	SDL_Texture* GetTexture(const string& fileName);
-	
-	SDL_Texture* GetTexture(const std::string& fileName);
 
 	int GetWindowWidth();
 	int GetWindowHeight();

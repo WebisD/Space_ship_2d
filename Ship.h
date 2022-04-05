@@ -12,6 +12,9 @@
 #include "AnimSpriteComponent.h"
 #include "Game.h"
 
+#ifndef _SHIP_H_
+#define _SHIP_H_
+
 class Ship : public Actor
 {
 public:
@@ -25,3 +28,5 @@ protected:
 	float mDownSpeed;
 	BulletControllerComponent* bcc = nullptr;
 };
+
+#endif

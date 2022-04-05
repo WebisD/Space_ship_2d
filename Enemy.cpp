@@ -3,6 +3,7 @@
 #include "Enemy.h"
 #include "Utils.h"
 #include "Game.h"
+#include "Ship.h"
 #include "AnimSpriteComponent.h"
 
 Enemy::Enemy(Game* game) : Ship(game)
