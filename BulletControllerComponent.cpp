@@ -1,4 +1,5 @@
 #include "BulletControllerComponent.h"
+#include "Enemy.h"
 
 BulletControllerComponent::BulletControllerComponent(Actor* owner)
 	:Component(owner)
@@ -38,6 +39,18 @@ bool BulletControllerComponent::checkBulletCollision(Bullet* bullet)
 	if (bullet->GetPosition().x >= mOwner->GetGame()->GetWindowWidth())
 	{
 		return true;
+	}
+
+	for (class Enemy* enemy : mOwner->GetGame()->GetEnemies())
+	{
+		if (
+			bullet->GetPosition().x > enemy->GetPosition().x - enemy->GetWidth()
+			&& bullet->GetPosition().y <= enemy->GetPosition().y + enemy->GetMidHeight() && bullet->GetPosition().y >= enemy->GetPosition().y - enemy->GetMidHeight()
+		) {
+			printf("ACERTOU!\n");
+			enemy->SetHit(true);
+			return true;
+		}
 	}
 
 	return false;

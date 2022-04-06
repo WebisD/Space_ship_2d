@@ -10,7 +10,9 @@ class Enemy : public Ship
 public:
 	Enemy(class Game* game);
 	void UpdateActor(float deltaTime) override;
+	void SetHit(bool hit) { mHit = hit; }
 private:
-	void Enemy::SetInitialRandomPosition();
+	void SetInitialRandomPosition();
+	bool mHit = false;
 };
 #endif

@@ -19,6 +19,13 @@ Enemy::Enemy(Game* game) : Ship(game)
 
 void Enemy::UpdateActor(float deltaTime)
 {
+
+	if (mHit) {
+		this->GetGame()->IncrementScore();
+		delete this;
+		return;
+	}
+
 	Vector2 pos = GetPosition();
 	
 	pos.x += GetRightSpeed() * deltaTime;

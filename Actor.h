@@ -39,6 +39,10 @@ public:
 	float GetMidHeight() const { return mHeight / 2; }
 	float GetMidWidth() const { return mWidth / 2; }
 	void SetRotation(float rotation) { mRotation = rotation; }
+	float GetHeight() const { return mHeight; }
+	float GetWidth() const { return mWidth; }
+	void SetHeight(float height) { mHeight = height; }
+	void SetWidth(float width) { mWidth = width; }
 
 	State GetState() const { return mState; }
 	void SetState(State state) { mState = state; }
