@@ -6,7 +6,7 @@ Bullet::Bullet(Game* game, Vector2 position)
 {
 	this->SetPosition(position);
 
-	AnimSpriteComponent* asc = new AnimSpriteComponent(this);
+	AnimSpriteComponent* asc = new AnimSpriteComponent(this, 99);
 	std::vector<SDL_Texture*> anims = {
 		game->GetTexture("Assets/Bullet02.png")
 	};

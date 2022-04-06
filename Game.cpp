@@ -110,6 +110,9 @@ void Game::UpdateGame()
 	mTicksCount = SDL_GetTicks();
 
 	// Update all actors
+
+	UpdateScoreBoard();
+
 	mUpdatingActors = true;
 	for (auto actor : mActors)
 	{
@@ -168,7 +171,8 @@ void Game::LoadData()
 	{
 		Enemy* enemy = new Enemy(this);
 		enemy->SetScale(1.5f);
-
+		//enemy->SetHeight(10);
+		//enemy->SetWidth(5);
 		enemies.push_back(enemy);
 	}
 
@@ -323,4 +327,15 @@ int Game::GetWindowHeight()
 int Game::GetWindowWidth()
 {
 	return SDL_GetWindowSurface(mWindow)->w;
+}
+
+vector<Enemy*> Game::GetEnemies() 
+{
+	return enemies;
+}
+
+void Game::UpdateScoreBoard()
+{
+	string score = "Score: " + to_string(mScore);
+	SDL_SetWindowTitle(mWindow, score.c_str());
 }
