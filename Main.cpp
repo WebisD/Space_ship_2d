@@ -6,6 +6,7 @@
 // See LICENSE in root directory for full details.
 // ----------------------------------------------------------------
 
+#include "Utils.h"
 #include "Game.h"
 
 int main(int argc, char** argv)

@@ -14,6 +14,7 @@
 #include "Ship.h"
 #include "Enemy.h"
 #include "BGSpriteComponent.h"
+#include "Utils.h"
 
 Game::Game()
 :mWindow(nullptr)
@@ -142,6 +143,13 @@ void Game::UpdateGame()
 	{
 		delete actor;
 	}
+
+	if (mScore != 0 && (mScore % (scoreThreshold * scoreModifier)) == 0)
+	{
+		enemiesAmount *= scoreModifier;
+		scoreModifier *= 2;
+		GenerateEnemies();
+	}
 }
 
 void Game::GenerateOutput()
@@ -165,16 +173,14 @@ void Game::LoadData()
 	mShip->SetPosition(Vector2(100.0f, 384.0f));
 	mShip->SetScale(1.5f);
 
+	Utils::MIN_X = GetGameWidth();
+	Utils::MAX_X = GetGameWidth() + 200;
+
+	Utils::MIN_Y = 100;
+	Utils::MAX_Y = GetGameHeight() - 100;
+
 	// Enemies
-	enemiesAmount = 5;
-	for (int i = 0; i < enemiesAmount; i++)
-	{
-		Enemy* enemy = new Enemy(this);
-		enemy->SetScale(1.5f);
-		//enemy->SetHeight(10);
-		//enemy->SetWidth(5);
-		enemies.push_back(enemy);
-	}
+	GenerateEnemies();
 
 	// Create actor for the background (this doesn't need a subclass)
 	Actor* temp = new Actor(this);
@@ -329,13 +335,23 @@ int Game::GetWindowWidth()
 	return SDL_GetWindowSurface(mWindow)->w;
 }
 
-vector<Enemy*> Game::GetEnemies() 
+vector<Enemy*>* Game::GetEnemies() 
 {
-	return enemies;
+	return &enemies;
 }
 
 void Game::UpdateScoreBoard()
 {
 	string score = "Score: " + to_string(mScore);
 	SDL_SetWindowTitle(mWindow, score.c_str());
+}
+
+void Game::GenerateEnemies()
+{
+	for (int i = 0; i < enemiesAmount; i++)
+	{
+		Enemy* enemy = new Enemy(this);
+		enemy->SetScale(1.5f);
+		enemies.push_back(enemy);
+	}
 }

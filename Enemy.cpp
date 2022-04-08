@@ -5,6 +5,7 @@
 #include "Game.h"
 #include "Ship.h"
 #include "AnimSpriteComponent.h"
+#include <iostream>
 
 Enemy::Enemy(Game* game) : Ship(game)
 {
@@ -17,11 +18,28 @@ Enemy::Enemy(Game* game) : Ship(game)
 };
 
 
+void Enemy::RemoveEnemyFromGame()
+{
+	vector<Enemy*>* enemies = GetGame()->GetEnemies();
+
+	int it = 0;
+	for (auto& enemy : *enemies)
+	{
+		if (this == enemy) {
+			enemies->erase(enemies->begin() + it);
+			return;
+		}
+		it++;
+	}
+}
+
+
 void Enemy::UpdateActor(float deltaTime)
 {
 
 	if (mHit) {
 		this->GetGame()->IncrementScore();
+		RemoveEnemyFromGame();
 		delete this;
 		return;
 	}
@@ -34,7 +52,11 @@ void Enemy::UpdateActor(float deltaTime)
 	SetPosition(pos);
 
 	const bool isOutOfWindow = pos.x - GetMidWidth() < -GetMidWidth() * 2;
-	if (isOutOfWindow) delete this;
+	if (isOutOfWindow)
+	{
+		RemoveEnemyFromGame();
+		delete this;
+	}
 }
 
 
@@ -44,8 +66,8 @@ void Enemy::SetInitialRandomPosition()
 	int gameHeight = GetGame()->GetGameHeight();
 	int offset = 200;
 
-	int randX = Utils::RandNumber(gameWidth, gameWidth + offset);
-	int randY = Utils::RandNumber(-GetMidHeight(), gameHeight + GetMidHeight());
+	int randX = Utils::RandNumberX();
+	int randY = Utils::RandNumberY();
 
 	Vector2 randPosision = Vector2(randX, randY);
 	SetPosition(randPosision);

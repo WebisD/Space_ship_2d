@@ -11,6 +11,7 @@ public:
 	Enemy(class Game* game);
 	void UpdateActor(float deltaTime) override;
 	void SetHit(bool hit) { mHit = hit; }
+	void RemoveEnemyFromGame();
 private:
 	void SetInitialRandomPosition();
 	bool mHit = false;

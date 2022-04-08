@@ -41,13 +41,12 @@ bool BulletControllerComponent::checkBulletCollision(Bullet* bullet)
 		return true;
 	}
 
-	for (class Enemy* enemy : mOwner->GetGame()->GetEnemies())
+	for (class Enemy* enemy : *mOwner->GetGame()->GetEnemies())
 	{
 		if (
 			bullet->GetPosition().x > enemy->GetPosition().x - enemy->GetWidth()
 			&& bullet->GetPosition().y <= enemy->GetPosition().y + enemy->GetMidHeight() && bullet->GetPosition().y >= enemy->GetPosition().y - enemy->GetMidHeight()
 		) {
-			printf("ACERTOU!\n");
 			enemy->SetHit(true);
 			return true;
 		}

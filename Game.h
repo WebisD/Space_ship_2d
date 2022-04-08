@@ -36,12 +36,13 @@ public:
 	int GetWindowWidth();
 	int GetWindowHeight();
 
-	vector<class Enemy*> GetEnemies();
+	vector<class Enemy*>* GetEnemies();
 
 	int SetScore(int score) { mScore = score;  }
 	int GetScore() const { return mScore; }
 	void IncrementScore() { mScore++; }
 	void UpdateScoreBoard();
+	void GenerateEnemies();
 
 private:
 	void ProcessInput();
@@ -72,7 +73,9 @@ private:
 
 	// Game-specific
 	class Ship* mShip; // Player's ship
-	int enemiesAmount;
+	int enemiesAmount = 10;
 	vector<class Enemy*> enemies;
-	int mScore;
+	int mScore = 0;
+	int scoreThreshold = 5;
+	int scoreModifier = 2;
 };
