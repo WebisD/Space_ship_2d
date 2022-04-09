@@ -208,6 +208,7 @@ void Game::LoadData()
 
 void Game::LoadDataWithPower()
 {
+	SetEnemyRightSpeed();
 	// Create the "far back" background
 	Actor* temp = new Actor(this);
 	temp->SetPosition(Vector2(512.0f, 384.0f));
