@@ -43,6 +43,7 @@ public:
 	void IncrementScore() { mScore++; }
 	void UpdateScoreBoard();
 	void GenerateEnemies();
+	void SetEnemyRightSpeed();
 
 private:
 	void ProcessInput();

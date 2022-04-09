@@ -149,6 +149,7 @@ void Game::UpdateGame()
 		enemiesAmount *= scoreModifier;
 		scoreModifier *= 2;
 		GenerateEnemies();
+		SetEnemyRightSpeed();
 	}
 }
 
@@ -346,9 +347,20 @@ void Game::UpdateScoreBoard()
 	SDL_SetWindowTitle(mWindow, score.c_str());
 }
 
+void Game::SetEnemyRightSpeed() {
+	vector<Enemy*>* enemies = Game::GetEnemies();
+
+	for (auto& enemy : *enemies)
+	{
+		float speed = enemy->GetRightSpeed();
+		enemy->SetRightSpeed(speed*0.95);
+	}
+	return;
+}
+
 void Game::GenerateEnemies()
 {
-	for (int i = 0; i < enemiesAmount; i++)
+	for (int i = 0; i <= enemiesAmount; i++)
 	{
 		Enemy* enemy = new Enemy(this);
 		enemy->SetScale(1.5f);
