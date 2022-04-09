@@ -144,12 +144,12 @@ void Game::UpdateGame()
 		delete actor;
 	}
 
+	// atingiu a cota de inimigos
 	if (mScore != 0 && (mScore % (scoreThreshold * scoreModifier)) == 0)
 	{
-		enemiesAmount *= scoreModifier;
+		enemiesAmount += 1;
 		scoreModifier *= 2;
-		GenerateEnemies();
-		SetEnemyRightSpeed();
+		LoadDataWithPower();
 	}
 }
 
@@ -204,6 +204,32 @@ void Game::LoadData()
 	};
 	bg->SetBGTextures(bgtexs);
 	bg->SetScrollSpeed(-200.0f);
+}
+
+void Game::LoadDataWithPower()
+{
+	// Create the "far back" background
+	Actor* temp = new Actor(this);
+	temp->SetPosition(Vector2(512.0f, 384.0f));
+	BGSpriteComponent* bg = new BGSpriteComponent(temp);
+	bg->SetScreenSize(Vector2(1024.0f, 768.0f));
+	std::vector<SDL_Texture*> bgtexs = {
+		GetTexture("Assets/Farback01.png"),
+		GetTexture("Assets/Farback02.png")
+	};
+	bg->SetBGTextures(bgtexs);
+	bg->SetScrollSpeed(-25.0f);
+	// Create the closer background
+	bg = new BGSpriteComponent(temp, 50);
+	bg->SetScreenSize(Vector2(1024.0f, 768.0f));
+	bgtexs = {
+		GetTexture("Assets/Stars.png"),
+		GetTexture("Assets/Stars.png")
+	};
+	bg->SetBGTextures(bgtexs);
+	bg->SetScrollSpeed(-50.0f);
+	// Enemies
+	GenerateEnemies();
 }
 
 void Game::UnloadData()

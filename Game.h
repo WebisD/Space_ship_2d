@@ -50,6 +50,7 @@ private:
 	void UpdateGame();
 	void GenerateOutput();
 	void LoadData();
+	void LoadDataWithPower();
 	void UnloadData();
 	int GameWidth;
 	int GameHeight;
@@ -74,9 +75,9 @@ private:
 
 	// Game-specific
 	class Ship* mShip; // Player's ship
-	int enemiesAmount = 10;
+	int enemiesAmount = 6;
 	vector<class Enemy*> enemies;
 	int mScore = 0;
-	int scoreThreshold = 5;
+	int scoreThreshold = 3;
 	int scoreModifier = 2;
 };

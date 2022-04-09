@@ -14,7 +14,18 @@ Enemy::Enemy(Game* game) : Ship(game)
 	mDownSpeed = .0f;
 	mRightSpeed = -40.f;
 
+	// Create an animated sprite component
+	AnimSpriteComponent* asc = new AnimSpriteComponent(this);
+	std::vector<SDL_Texture*> anims = {
+		game->GetTexture("Assets/Enemy01.png"),
+	};
+	asc->SetAnimTextures(anims);
+
+	mWidth = 64.f;
+	mHeight = 29.;
+
 	SetRotation(Math::Pi);
+
 };
 
 void Enemy::RemoveEnemyFromGame()
