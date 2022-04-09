@@ -28,7 +28,6 @@ Enemy::Enemy(Game* game) : Ship(game)
 
 };
 
-
 void Enemy::RemoveEnemyFromGame()
 {
 	vector<Enemy*>* enemies = GetGame()->GetEnemies();
@@ -42,6 +41,11 @@ void Enemy::RemoveEnemyFromGame()
 		}
 		it++;
 	}
+}
+
+void Enemy::SetRightSpeed(float newSpeed)
+{
+	this->mRightSpeed *= newSpeed;
 }
 
 

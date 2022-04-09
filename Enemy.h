@@ -12,6 +12,7 @@ public:
 	void UpdateActor(float deltaTime) override;
 	void SetHit(bool hit) { mHit = hit; }
 	void RemoveEnemyFromGame();
+	void SetRightSpeed(float newSpeed);
 private:
 	void SetInitialRandomPosition();
 	bool mHit = false;
