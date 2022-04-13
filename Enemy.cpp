@@ -12,7 +12,7 @@ Enemy::Enemy(Game* game) : Ship(game)
 	SetInitialRandomPosition();
 	
 	mDownSpeed = .0f;
-	mRightSpeed = -40.f;
+	mRightSpeed = -50.f;
 
 	// Create an animated sprite component
 	AnimSpriteComponent* asc = new AnimSpriteComponent(this);

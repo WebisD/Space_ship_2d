@@ -149,6 +149,8 @@ void Game::UpdateGame()
 	{
 		enemiesAmount += 1;
 		scoreModifier *= 2;
+		this->bgSpeed += 10.0f;
+		this->bg2Speed += 20.0f;
 		LoadDataWithPower();
 	}
 }
@@ -194,7 +196,8 @@ void Game::LoadData()
 		GetTexture("Assets/Farback02.png")
 	};
 	bg->SetBGTextures(bgtexs);
-	bg->SetScrollSpeed(-100.0f);
+	//bg->SetScrollSpeed(-100.0f);
+	bg->SetScrollSpeed(this->bgSpeed);
 	// Create the closer background
 	bg = new BGSpriteComponent(temp, 50);
 	bg->SetScreenSize(Vector2(1024.0f, 768.0f));
@@ -203,7 +206,8 @@ void Game::LoadData()
 		GetTexture("Assets/Stars.png")
 	};
 	bg->SetBGTextures(bgtexs);
-	bg->SetScrollSpeed(-200.0f);
+	//bg->SetScrollSpeed(-200.0f);
+	bg->SetScrollSpeed(this->bg2Speed);
 }
 
 void Game::LoadDataWithPower()
@@ -219,7 +223,8 @@ void Game::LoadDataWithPower()
 		GetTexture("Assets/Farback02.png")
 	};
 	bg->SetBGTextures(bgtexs);
-	bg->SetScrollSpeed(-25.0f);
+	//bg->SetScrollSpeed(-25.0f);
+	bg->SetScrollSpeed(this->bgSpeed);
 	// Create the closer background
 	bg = new BGSpriteComponent(temp, 50);
 	bg->SetScreenSize(Vector2(1024.0f, 768.0f));
@@ -228,7 +233,8 @@ void Game::LoadDataWithPower()
 		GetTexture("Assets/Stars.png")
 	};
 	bg->SetBGTextures(bgtexs);
-	bg->SetScrollSpeed(-50.0f);
+	//bg->SetScrollSpeed(-50.0f);
+	bg->SetScrollSpeed(this->bg2Speed);
 	// Enemies
 	GenerateEnemies();
 }

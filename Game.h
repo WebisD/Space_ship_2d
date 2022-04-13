@@ -80,4 +80,6 @@ private:
 	int mScore = 0;
 	int scoreThreshold = 3;
 	int scoreModifier = 2;
+	float bgSpeed = -100.0f;
+	float bg2Speed = -300.0f;
 };
