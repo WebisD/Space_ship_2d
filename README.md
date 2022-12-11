@@ -14,7 +14,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/antuniooh/Space_ship_2d">
-    <img src="https://raw.githubusercontent.com/antuniooh/Space_ship_2d/main/Sprites/Assets/arkanoid.bmp" alt="Logo" width="550">
+    <img src="https://github.com/antuniooh/Space_ship_2d/blob/main/Assets/Ship04.png" alt="Logo" width="550">
   </a>
 </p>
 
