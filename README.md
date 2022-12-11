@@ -1,20 +1,20 @@
 <p align="center">
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/WebisD/Space_ship_2d">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/antuniooh/Space_ship_2d">
 
-  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/WebisD/Space_ship_2d">
+  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/antuniooh/Space_ship_2d">
   
   <a href="https://github.com/henriquevital00/pong-game/commits/master">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/WebisD/Space_ship_2d">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/antuniooh/Space_ship_2d">
   </a>
   
-   <img alt="GitHub" src="https://img.shields.io/github/license/WebisD/Space_ship_2d">
+   <img alt="GitHub" src="https://img.shields.io/github/license/antuniooh/Space_ship_2d">
 </p>
 
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/antuniooh/Relic">
-    <img src="https://raw.githubusercontent.com/WebisD/Space_ship_2d/main/Sprites/Assets/arkanoid.bmp" alt="Logo" width="550">
+  <a href="https://github.com/antuniooh/Space_ship_2d">
+    <img src="https://github.com/antuniooh/Space_ship_2d/blob/main/Assets/Ship04.png" alt="Logo" width="550">
   </a>
 </p>
 
@@ -43,11 +43,9 @@
 
 <!-- ABOUT THE PROJECT -->
 ## 💻 About The Project
-Semiannual project of the subject of Game Development, taught at Centro Universitário FEI. It consists in a clone of a ship game
+Semiannual project of the subject of Game Development, taught at Centro Universitário FEI. It consists in a clone of a ship game.
 
 For more details, play the game in your machine.
-
-![image](https://github.com/)
 
 
 <!-- HOW TO RUN -->
@@ -57,7 +55,7 @@ For more details, play the game in your machine.
 ```bash
 
 # Clone the repository
-$ git clone https://github.com/WebisD/Space_ship_2d.git
+$ git clone https://github.com/antuniooh/Space_ship_2d.git
 
 # Access the project folder in your terminal / cmd
 $ cd Space_ship_2d
